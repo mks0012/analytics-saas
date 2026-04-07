@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+venv/
+*.py[cod]
+
+# Database/Secret
+.env
+
+# MacOS
+.DS_Store
+
+# Docker
+postgres_data/
