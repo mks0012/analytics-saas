@@ -1,13 +1,15 @@
 # Python
 __pycache__/
-venv/
 *.py[cod]
-
-# Database/Secret
+*$py.class
+venv/
 .env
 
-# MacOS
-.DS_Store
+# Node
+node_modules/
+.next/
+dist/
+build/
 
-# Docker
-postgres_data/
+# Mac
+.DS_Store
