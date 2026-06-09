@@ -6,15 +6,15 @@ PulseTrack is a high-performance, distributed event ingestion engine designed to
 Unlike traditional synchronous logging, PulseTrack decouples data ingestion from storage to ensure zero latency for the end-user and maximum fault tolerance.
 
 1. **Ingestion Layer (FastAPI):** A high-speed entry point that validates `x-api-key` headers and offloads event payloads to a message broker.
-2. **Buffering Layer (Redis):** Acts as a shock absorber, preventing database bottlenecks during peak traffic (e.g., flash sales or marketing spikes).
-3. **Processing Layer (Python/Asyncio):** A background worker fleet that pulls batches from Redis and performs optimized bulk-inserts into the database.
+2. **Buffering Layer (Redis):** Acts as a shock absorber, preventing database bottlenecks during peak traffic surges.
+3. **Processing Layer (Python/Asyncio):** A background worker that pulls batches from Redis and performs optimized bulk-inserts into the database.
 4. **Persistence Layer (PostgreSQL/Supabase):** Stores structured event data and metadata for long-term analysis.
 5. **Visualization Layer (Next.js):** A premium, glassmorphism-style dashboard providing real-time activity metrics and event distribution insights.
 
 ## 🛠️ The Tech Stack
 - **Backend:** Python, FastAPI, Redis, Asyncpg
 - **Frontend:** Next.js, TypeScript, Recharts, Lucide Icons
-- **DevOps:** Docker (Local Redis orchestration)
+- **DevOps:** Docker (Local Redis & Service Orchestration)
 - **Database:** Supabase (PostgreSQL)
 
 ## ⚡ Key Features
@@ -25,24 +25,24 @@ Unlike traditional synchronous logging, PulseTrack decouples data ingestion from
 
 ## 🚀 Getting Started
 
-### 1. Infrastructure
+### 1. Boot the Backend Infrastructure
+Ensure Docker is running on your machine, then spin up the message broker and backend services:
+
 ```bash
 # Start the Redis message broker
 docker run -d --name redis-local -p 6379:6379 redis:7-alpine
 
-
-Backend Services
-Bash
-# Start the Ingestion API
+# In a new terminal, start the Ingestion API
 PYTHONPATH=. fastapi dev services/ingestion-api/main.py
 
-# Start the Event Worker
+# In another terminal, start the Background Worker
 PYTHONPATH=. python services/worker/worker.py
+2. Run the Frontend Dashboard
+Navigate to the Next.js client and start the UI:
 
-
-Frontend Dashboard
 Bash
 cd frontend
+npm install
 npm run dev
 📈 Scalability Roadmap
 Horizontal Scaling: Deploy via Kubernetes to scale workers based on Redis queue depth.
