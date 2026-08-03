@@ -2,7 +2,7 @@
 
 PulseTrack is a high-performance, distributed event ingestion engine designed to handle massive traffic surges using an asynchronous producer-consumer architecture.
 
-## 🏛️ System Architecture
+## System Architecture
 Unlike traditional synchronous logging, PulseTrack decouples data ingestion from storage to ensure zero latency for the end-user and maximum fault tolerance.
 
 1. **Ingestion Layer (FastAPI):** A high-speed entry point that validates `x-api-key` headers and offloads event payloads to a message broker.
@@ -11,19 +11,19 @@ Unlike traditional synchronous logging, PulseTrack decouples data ingestion from
 4. **Persistence Layer (PostgreSQL/Supabase):** Stores structured event data and metadata for long-term analysis.
 5. **Visualization Layer (Next.js):** A premium, glassmorphism-style dashboard providing real-time activity metrics and event distribution insights.
 
-## 🛠️ The Tech Stack
+##  The Tech Stack
 - **Backend:** Python, FastAPI, Redis, Asyncpg
 - **Frontend:** Next.js, TypeScript, Recharts, Lucide Icons
 - **DevOps:** Docker (Local Redis & Service Orchestration)
 - **Database:** Supabase (PostgreSQL)
 
-## ⚡ Key Features
+##  Key Features
 - **Asynchronous Ingestion:** Returns `202 Accepted` instantly to the client while processing happens in the background.
 - **Batched Persistence:** Minimizes database I/O by grouping events before insertion.
 - **Secure Access:** Per-application API key validation.
 - **Premium Analytics UI:** Apple Vision Pro-inspired aesthetic with dynamic time-series filtering (24h / 7d / 30d).
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Boot the Backend Infrastructure
 Ensure Docker is running on your machine, then spin up the message broker and backend services:
