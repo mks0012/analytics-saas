@@ -11,8 +11,7 @@ def get_db_config():
     If running inside Docker, it uses the host provided by Docker Compose.
     Otherwise, it defaults to the Supabase host.
     """
-    # Docker Compose will set DB_HOST to 'db' or 'localhost' 
-    # but we want to prioritize the Supabase host for remote DB access.
+    
     return {
         "user": os.getenv("DB_USER", "postgres"),
         "password": os.getenv("DB_PASSWORD"),
@@ -32,7 +31,7 @@ async def create_pool():
             port=config["port"],
             min_size=5,
             max_size=20,
-            # Supabase often requires SSL for remote connections
+            # Supabase  requires SSL for remote connections
             ssl="require" 
         )
         print(f"✅ Connected to Database at {config['host']}")

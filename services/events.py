@@ -11,8 +11,7 @@ async def batch_insert_events(pool: asyncpg.Pool, events_batch: List[str]):
     
     async with pool.acquire() as connection:
         async with connection.transaction():
-            # This is the SQL command. 
-            # Check TablePlus: if your column is called 'tenant_id', change 'api_key' to 'tenant_id'
+            
             query = """
                 INSERT INTO events (api_key, event_name, metadata)
                 VALUES ($1, $2, $3)

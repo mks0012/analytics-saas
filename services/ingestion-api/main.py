@@ -21,7 +21,7 @@ async def lifespan(app: FastAPI):
     app.state.redis = redis.Redis(host=redis_host, port=6379, db=0, decode_responses=True)
     print(f"🚀 API Startup Complete. Redis: {redis_host}")
     yield
-    # Cleanup
+   
     if app.state.pool:
         await app.state.pool.close()
     if app.state.redis:

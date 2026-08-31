@@ -30,7 +30,7 @@ async def run_worker():
                 await batch_insert_events(pool, batch)
                 print("✅ Batch inserted to Supabase.")
             
-            # Wait a bit before checking for new events to save CPU
+            
             await asyncio.sleep(1)
             
     except Exception as e:
